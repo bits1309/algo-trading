@@ -24,20 +24,17 @@ export default function Login() {
     const [authCode, setAuthCode] = useState(null)
 
     useEffect(() => {
-        async function getCode() {
-            const url = window.location.href;
-            const urlParams = new URLSearchParams(url);
-            const authenticationCode = urlParams.get('auth_code');
+        const url = window.location.href;
+        const urlParams = new URLSearchParams(url);
+        const authenticationCode = urlParams.get('auth_code');
 
-            if(authenticationCode === null) {
-                window.location.href = authenticationURL
-            } else {
-                setAuthCode(authenticationCode);
-                await getAccessToken(authenticationCode)
-            }  
-        }
-        getCode();
-    }, [authCode]);
+        if(authenticationCode === null) {
+            window.location.href = authenticationURL
+        } else {
+            setAuthCode(authenticationCode);
+            getAccessToken(authenticationCode)
+        }  
+    }, []);
 
     const getAccessToken = async(code) => {
         let body = {
