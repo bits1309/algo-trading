@@ -24,17 +24,36 @@ export default function Login() {
     const [authCode, setAuthCode] = useState(null)
 
     useEffect(() => {
+        async function getCode() {
+            const url = window.location.href;
+            const urlParams = new URLSearchParams(url);
+            const authenticationCode = urlParams.get('auth_code');
 
-        const url = window.location.href;
-        const urlParams = new URLSearchParams(url);
-        const authCode = urlParams.get('auth_code');
-
-        if(authCode === null) {
-            window.location.href = authenticationURL
-        } else {
-            setAuthCode(authCode)
-        }        
+            if(authenticationCode === null) {
+                window.location.href = authenticationURL
+            } else {
+                setAuthCode(authenticationCode);
+                await getAccessToken(authenticationCode)
+            }  
+        }
+        getCode();
     }, [authCode]);
+
+    const getAccessToken = async(code) => {
+        let body = {
+            "grant_type":"authorization_code",
+            "appIdHash":"aa6fc6f83659d0eb8a9e040f0b08e35b07278175ad94d987792073c78f13a427",
+            "code":code
+        }
+
+        let resp = await axios.post('https://api.fyers.in/api/v2/validate-authcode', body, {
+            headers: {
+                'Content-Type': 'application/json'
+            }
+        })
+
+        setAccessToken(resp['access_token'])
+    }
 
     return (
         <>
