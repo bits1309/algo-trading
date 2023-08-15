@@ -53,12 +53,22 @@ export default function Login() {
         })
 
         Promise.all([resp]).then(res => {
-            console.log(res);
+            if(res['status'] == 200) {
+                setAccessToken(resp['data']['access_token'])
+                fyers.setAccessToken(resp['data']['access_token'])
+            }
         })
+    }
 
-        console.log(resp);
+    const getUserDetails = async() => {
+        if(accessToken !== null) {
+            const userDetails = fyers.get_profile();
 
-        setAccessToken(resp['access_token'])
+            Promise.all([userDetails]).then(res => {
+                console.log('user details', res)
+            })
+        }
+        
     }
 
     return (
@@ -69,7 +79,14 @@ export default function Login() {
                             <div 
                                 className='col-12 flex align-items-center justify-content-center'>
                                 <span className='text-4xl font-semibold'>ALGO TRADING</span>
-                                
+                                {
+                                    accessToken &&
+                                    <Button 
+                                        label="User Details" 
+                                        icon="pi pi-external-link" 
+                                        onClick={getUserDetails} 
+                                    />
+                                }
                             </div>
                         </div>
                     </div>              
