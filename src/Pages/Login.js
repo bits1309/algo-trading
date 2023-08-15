@@ -24,34 +24,17 @@ export default function Login() {
     const [authCode, setAuthCode] = useState(null)
 
     useEffect(() => {
-        window.location.href = authenticationURL
+
+        const url = window.location.href;
+        const urlParams = new URLSearchParams(url);
+        const authCode = urlParams.get('auth_code');
+
+        if(authCode === null) {
+            window.location.href = authenticationURL
+        } else {
+            setAuthCode(authCode)
+        }        
     }, [authCode]);
-
-    const login = async() => {
-
-        window.location.href = 'https://api.fyers.in/api/v2/generate-authcode?client_id=KSSB1AQ631-100&redirect_uri=https://bits1309.github.io/algo-trading/&response_type=code&code_challenge=sample_code_challenge&state=sample_state&nonce=sample_nonce&scope=openid'
-
-        
-        
-    }
-
-    const getAuthCode = async() => {
-        setTimeout(() => {
-            var url = window.location.href;
-
-            var urlParams = new URLSearchParams(url);
-
-            var authCode = urlParams.get('auth_code');
-
-            localStorage.setItem('auth code', authCode)
-
-            console.log('auth code',authCode)
-
-            return authCode;
-        }, 3000);
-    }
-
-    //auth_code=
 
     return (
         <>
