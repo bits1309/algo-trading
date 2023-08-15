@@ -42,7 +42,7 @@ export default function Login() {
     const getAccessToken = async(code) => {
         let body = {
             "grant_type":"authorization_code",
-            "appIdHash":"aa6fc6f83659d0eb8a9e040f0b08e35b07278175ad94d987792073c78f13a427",
+            "appIdHash":"10655c201dfc6f8126d66dcc962cc6228f5cd0a6548246b570758cb7019cb3d2",
             "code":code
         }
 
