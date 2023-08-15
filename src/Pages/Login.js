@@ -10,7 +10,7 @@ import axios from 'axios';
 
 import { Button } from 'primereact/button';
 const appID="KSSB1AQ631-100";
-const secretID="VLL035OEWK";
+const secretID="TQFG1O3HIR";
 const redirectURL="https://www.google.com/";
 const authenticationURL = 'https://api.fyers.in/api/v2/generate-authcode?client_id=KSSB1AQ631-100&redirect_uri=https://www.google.com/&response_type=code&code_challenge=sample_code_challenge&state=sample_state&nonce=sample_nonce&scope=openid'
 
