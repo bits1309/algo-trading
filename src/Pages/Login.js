@@ -52,6 +52,8 @@ export default function Login() {
             }
         })
 
+        console.log(resp);
+
         setAccessToken(resp['access_token'])
     }
 
