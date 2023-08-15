@@ -52,6 +52,10 @@ export default function Login() {
             }
         })
 
+        Promise.all([resp]).then(res => {
+            console.log(res);
+        })
+
         console.log(resp);
 
         setAccessToken(resp['access_token'])
