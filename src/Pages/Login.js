@@ -51,7 +51,7 @@ export default function Login() {
 
         Promise.all([resp]).then(res => {
             console.log('res start', res);
-            if(res['s'] == 'ok') {
+            if(res['data']['s'] == 'ok') {
                 console.log('res if', res);
                 setAccessToken(res['data']['access_token'])
                 fyers.setAccessToken(res['data']['access_token'])
