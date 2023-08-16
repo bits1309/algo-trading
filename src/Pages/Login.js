@@ -34,7 +34,7 @@ export default function Login() {
             setAuthCode(authenticationCode);
             getAccessToken(authenticationCode)
         }  
-    }, []);
+    }, [accessToken]);
 
     const getAccessToken = async(code) => {
         let body = {
