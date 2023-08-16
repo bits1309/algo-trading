@@ -24,7 +24,7 @@ export default function OrdersDialog(props) {
        }
        get();
         
-    }, [orders])
+    }, [])
 
     const getOrderDetails = async() => {
         setLoading(true);
