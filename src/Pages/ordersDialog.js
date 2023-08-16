@@ -9,13 +9,21 @@ export default function OrdersDialog(props) {
     const [orders, setOrders] = useState(null);
 
 
-    useEffect(async() => {
+    useEffect(() => {
+       async function get() {
+        await getOrderDetails();
+       }
+       get();
+        
+    }, [orders])
+
+    const getOrderDetails = async() => {
         const orderDetails = await props.fyers.get_orders();
 
         Promise.all([orderDetails]).then(res => {
             setOrders(res[0].orderBook)
         })
-    }, [])
+    }
 
     const sideTemplate = (product) => {
         return side[product];
