@@ -69,11 +69,18 @@ export default function Login() {
                     setUserDetails(res[0].data)
                     //window.location.href = redirectURL;
                 }
-            })
-
-            
+            }) 
         }
-        
+    }
+
+    const getOrderDetails = async() => {
+        if(accessToken) {
+            const orderDetails = await fyers.get_orders();
+
+            Promise.all([orderDetails]).then(res => {
+                console.log(res)
+            })
+        }
     }
 
     return (
@@ -101,6 +108,13 @@ export default function Login() {
                             </div>
                         }
                         
+                    </div>
+                    <div>
+                        <Button 
+                            label="Get Order Details" 
+                            icon="pi pi-external-link" 
+                            onClick={getOrderDetails} 
+                        />
                     </div>
                 </div>            
             </div>
