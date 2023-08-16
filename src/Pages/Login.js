@@ -5,10 +5,11 @@ import 'primeicons/primeicons.css';
 import 'primereact/resources/themes/lara-light-indigo/theme.css';
 import 'primereact/resources/primereact.css';
 import 'primeflex/primeflex.css';
-
 import axios from 'axios';
-
 import { Button } from 'primereact/button';
+
+import OrdersDialog from './ordersDialog'
+
 const appID="KSSB1AQ631-100";
 const secretID="TQFG1O3HIR";
 const redirectURL="https://bits1309.github.io/algo-trading/";
@@ -23,6 +24,7 @@ export default function Login() {
     const [accessToken, setAccessToken] = useState(null);
     const [authCode, setAuthCode] = useState(null);
     const [userDetails, setUserDetails] = useState(null);
+    const [activity, setActivity] = useState(null);
 
     useEffect(() => {
         const url = window.location.href;
@@ -110,11 +112,12 @@ export default function Login() {
                         
                     </div>
                     <div>
-                        <Button 
-                            label="Get Order Details" 
-                            icon="pi pi-external-link" 
-                            onClick={getOrderDetails} 
-                        />
+                        {
+                            accessToken 
+                            && <OrdersDialog
+                                fyers={fyers}
+                            />
+                        }
                     </div>
                 </div>            
             </div>
