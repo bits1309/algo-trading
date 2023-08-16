@@ -67,7 +67,7 @@ export default function Login() {
             Promise.all([userDetails]).then(res => {
                 if(res[0].s === 'ok') {
                     setUserDetails(res[0].data)
-                    window.location.href = redirectURL;
+                    //window.location.href = redirectURL;
                 }
             })
 
