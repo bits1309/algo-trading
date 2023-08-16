@@ -19,7 +19,7 @@ export default function OrdersDialog(props) {
 
     useEffect(() => {
        async function get() {
-        if(!orders)
+        //if(!orders)
             await getOrderDetails();
        }
        get();
