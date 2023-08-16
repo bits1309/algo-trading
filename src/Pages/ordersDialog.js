@@ -31,6 +31,7 @@ export default function OrdersDialog(props) {
 
         Promise.all([orderDetails]).then(res => {
             let orders = res[0].orderBook?.filter(a => a.status === 2);
+            console.log(orders);
             let combinedOrders = [];
 
             for(const i = 0; i < orders?.length; i+2) {
@@ -49,6 +50,7 @@ export default function OrdersDialog(props) {
                 })
             }
 
+            console.log(combinedOrders)
             setOrders(combinedOrders);
 
             //setOrders(res[0].orderBook);
