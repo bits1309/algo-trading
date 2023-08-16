@@ -1,0 +1,141 @@
+
+.datatable-doc-demo .p-paginator .p-paginator-current {
+    margin-left: auto;
+}
+
+.datatable-doc-demo .p-progressbar {
+    height: 0.5rem;
+    background-color: #d8dadc;
+}
+
+.datatable-doc-demo .p-progressbar .p-progressbar-value {
+    background-color: #607d8b;
+}
+
+.datatable-doc-demo .p-datepicker {
+    min-width: 25rem;
+}
+
+.datatable-doc-demo .p-datepicker td {
+    font-weight: 400;
+}
+
+.datatable-doc-demo .p-datatable.p-datatable-visaapplications .p-datatable-header {
+    padding: 1rem;
+    text-align: left;
+    font-size: 1.5rem;
+}
+
+.datatable-doc-demo .p-datatable.p-datatable-visaapplications .p-paginator {
+    padding: 1rem;
+}
+
+.datatable-doc-demo .p-datatable.p-datatable-visaapplications .p-datatable-thead > tr > th {
+    text-align: left;
+}
+
+.datatable-doc-demo .p-datatable.p-datatable-visaapplications .p-dropdown-label:not(.p-placeholder) {
+    text-transform: uppercase;
+}
+
+.p-column-filter.p-fluid.p-column-filter-menu{
+    justify-content: end;
+}
+
+.p-column-filter {
+    width: fit-content;
+}
+
+.p-column-title {
+    width: 90%;
+}
+
+.p-overlay-badge .p-badge {
+    position: relative !important;
+    translate: transform(80%, -80%) !important;
+}
+
+.p-datatable .p-datatable-tbody > tr {
+    color: black !important;
+}
+
+.p-datatable-header {
+    background: #d8e5f0 !important;
+    border: 1px solid #d9d9d6 !important;
+}
+
+.p-datatable .p-datatable-thead > tr > th {
+    border: 1px solid #d9d9d6 !important;
+}
+
+.p-datatable-table th {
+    background: #d8e5f0 !important;
+}
+
+.p-datatable-visaapplications .row-assignedToPRO {
+    background-color: #FFCAC8 !important;
+}
+
+.p-datatable-visaapplications .row-inProgress {
+    background-color: #CCFFCC !important;
+}
+
+.p-datatable-visaapplications .row-pendingForApproval {
+    background-color: #FFCAC8 !important;
+}
+
+.p-button.p-button-rounded {
+    border-radius: 0.5rem !important;
+}
+
+.clearFilter {
+    background-color: #537898 !important;
+    border: 1px solid #537898 !important;
+    color: white !important;
+}
+
+.p-column-title {
+    color: #1e242b !important;
+}
+
+.p-multiselect-label.p-multiselect-items-label {
+    color: #1e242b !important;
+}
+
+.pi-bars {
+    color: #1e242b !important;
+}
+
+.pi.pi-filter-icon.pi-filter {
+    color: #1e242b !important;
+}
+
+.pi-fw.pi-sort-alt {
+    color: #1e242b !important;
+}
+
+.p-datatable-resizable .p-datatable-thead>tr>th, .p-datatable-resizable .p-datatable-tfoot>tr>td, .p-datatable-resizable .p-datatable-tbody>tr>td {
+    overflow: hidden !important;
+    white-space: normal !important;
+}
+
+.p-multiselect.p-component.p-inputwrapper.p-column-filter {
+    width: 100%;
+}
+
+.p-paginator .p-paginator-first, .p-paginator .p-paginator-prev, .p-paginator .p-paginator-next, .p-paginator .p-paginator-last {
+    background-color: transparent;
+    border: 0 none;
+    color: #6c757d;
+    min-width: 1rem;
+    height: 1.5rem;
+    margin: 0.143rem;
+    transition: box-shadow 0.2s;
+    border-radius: 50%;
+}
+
+@media screen and (max-width: 960px) {
+    .p-column-title {
+        width: fit-content;
+    }
+}

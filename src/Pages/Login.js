@@ -75,16 +75,6 @@ export default function Login() {
         }
     }
 
-    const getOrderDetails = async() => {
-        if(accessToken) {
-            const orderDetails = await fyers.get_orders();
-
-            Promise.all([orderDetails]).then(res => {
-                console.log(res)
-            })
-        }
-    }
-
     return (
         <>
             <div>
