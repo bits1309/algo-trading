@@ -68,7 +68,6 @@ export default function Login() {
                 if(res[0].s === 'ok') {
                     setUserDetails(res[0].data)
                 }
-                setUserDetails(res)
                 console.log('user details', res)
             })
         }
