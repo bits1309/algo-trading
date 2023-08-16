@@ -67,8 +67,11 @@ export default function Login() {
             Promise.all([userDetails]).then(res => {
                 if(res[0].s === 'ok') {
                     setUserDetails(res[0].data)
+                    window.location.href = redirectURL;
                 }
             })
+
+            
         }
         
     }
@@ -81,18 +84,19 @@ export default function Login() {
                         style={{
                             marginBottom: "20px",
                             background: '#eeebea',
-                            borderBottom: '1px solid #1e242b'
+                            borderBottom: '1px solid #1e242b',
+                            minHeight: '4rem'
                         }}>
                         <div className="col-6 md:col-6 text-center md:text-left flex align-items-center" style={{ paddingLeft: '10px' }}>
                             <section>
-                                <div className="font-bold mb-3 headerText">ALGO TRADING</div>
+                                <div style={{ fontSize: '22px', fontWeight: 'bold' }}>ALGO TRADING</div>
                             </section>
                         </div>
                         {
                             userDetails && 
                             <div className="col-6 md:col-6" style={{ display: 'flex', flexDirection: 'row', alignItems: 'center', justifyContent: 'end', paddingRight: '10px' }}>
                                 <section style={{ marginRight: '15px' }}>
-                                    <div className="headerText" style={{ fontSize: '18px' }}>Welcome {userDetails?.name}</div>
+                                    <div style={{ fontSize: '16px' }}>Welcome {userDetails?.name}</div>
                                 </section>
                             </div>
                         }
