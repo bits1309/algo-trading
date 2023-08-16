@@ -1,7 +1,7 @@
 {
   "files": {
     "main.css": "/algo-trading/static/css/main.9f318511.css",
-    "main.js": "/algo-trading/static/js/main.060b2cfc.js",
+    "main.js": "/algo-trading/static/js/main.5bb2538b.js",
     "static/js/787.b994d700.chunk.js": "/algo-trading/static/js/787.b994d700.chunk.js",
     "static/media/primeicons.svg": "/algo-trading/static/media/primeicons.e1441b135b3ca9ad643c.svg",
     "static/media/primeicons.eot": "/algo-trading/static/media/primeicons.d44157bdfa026dc877af.eot",
@@ -11,11 +11,11 @@
     "static/media/color.png": "/algo-trading/static/media/color.6441e63a57ccc5105bad.png",
     "index.html": "/algo-trading/index.html",
     "main.9f318511.css.map": "/algo-trading/static/css/main.9f318511.css.map",
-    "main.060b2cfc.js.map": "/algo-trading/static/js/main.060b2cfc.js.map",
+    "main.5bb2538b.js.map": "/algo-trading/static/js/main.5bb2538b.js.map",
     "787.b994d700.chunk.js.map": "/algo-trading/static/js/787.b994d700.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.9f318511.css",
-    "static/js/main.060b2cfc.js"
+    "static/js/main.5bb2538b.js"
   ]
 }
