@@ -32,27 +32,42 @@ export default function OrdersDialog(props) {
 
         Promise.all([orderDetails]).then(res => {
             let orders = res[0].orderBook?.filter(a => a.status === 2);
-            console.log(orders);
-            let combinedOrders = [];
+            // console.log(orders);
+            // let combinedOrders = [];
 
-            for(const i = 0; i < orders?.length; i+2) {
-                combinedOrders.push({
-                    "symbol": orders[i]?.symbol,
-                    "side": orders[i]?.side,
-                    "segment": orders[i]?.segment,
-                    "productType": orders[i]?.productType,
-                    "qty": orders[i]?.qty,
-                    "buyPrice": orders[i]?.tradedPrice,
-                    "sellPrice": orders[i+1]?.tradedPrice,
-                    "status": orders[i]?.status === 2 && orders[i+1]?.status === 2 ? 2 : 6,
-                    "orderDateTime": orders[i+1]?.orderDateTime,
-                    "pl": orders[i+1]?.tradedPrice - orders[i]?.tradedPrice,
+            // orders.forEach((order, i) => {
+            //     combinedOrders.push({
+            //         "symbol": order?.symbol,
+            //         "side": order?.side,
+            //         "segment": order?.segment,
+            //         "productType": order?.productType,
+            //         "qty": order?.qty,
+            //         "buyPrice": order?.tradedPrice,
+            //         "sellPrice": order?.tradedPrice,
+            //         "status": order?.status === 2 && orders[i+1]?.status === 2 ? 2 : 6,
+            //         "orderDateTime": order?.orderDateTime,
+            //         "pl": orders[i+1]?.tradedPrice - order?.tradedPrice,
+            //     })
+            // })
 
-                })
-            }
+            // for(const i = 0; i < orders?.length; i+2) {
+            //     combinedOrders.push({
+            //         "symbol": orders[i]?.symbol,
+            //         "side": orders[i]?.side,
+            //         "segment": orders[i]?.segment,
+            //         "productType": orders[i]?.productType,
+            //         "qty": orders[i]?.qty,
+            //         "buyPrice": orders[i]?.tradedPrice,
+            //         "sellPrice": orders[i+1]?.tradedPrice,
+            //         "status": orders[i]?.status === 2 && orders[i+1]?.status === 2 ? 2 : 6,
+            //         "orderDateTime": orders[i+1]?.orderDateTime,
+            //         "pl": orders[i+1]?.tradedPrice - orders[i]?.tradedPrice,
 
-            console.log(combinedOrders)
-            setOrders(combinedOrders);
+            //     })
+            // }
+
+            console.log(orders)
+            setOrders(orders);
 
             //setOrders(res[0].orderBook);
             setLoading(false);
