@@ -19,7 +19,8 @@ export default function OrdersDialog(props) {
 
     useEffect(() => {
        async function get() {
-        await getOrderDetails();
+        if(!orders)
+            await getOrderDetails();
        }
        get();
         
