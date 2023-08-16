@@ -1,7 +1,7 @@
 {
   "files": {
-    "main.css": "/algo-trading/static/css/main.9f318511.css",
-    "main.js": "/algo-trading/static/js/main.5bb2538b.js",
+    "main.css": "/algo-trading/static/css/main.4b4cade8.css",
+    "main.js": "/algo-trading/static/js/main.7f74dcbf.js",
     "static/js/787.b994d700.chunk.js": "/algo-trading/static/js/787.b994d700.chunk.js",
     "static/media/primeicons.svg": "/algo-trading/static/media/primeicons.e1441b135b3ca9ad643c.svg",
     "static/media/primeicons.eot": "/algo-trading/static/media/primeicons.d44157bdfa026dc877af.eot",
@@ -10,12 +10,12 @@
     "static/media/primeicons.woff2": "/algo-trading/static/media/primeicons.78172950b335ccdb94e2.woff2",
     "static/media/color.png": "/algo-trading/static/media/color.6441e63a57ccc5105bad.png",
     "index.html": "/algo-trading/index.html",
-    "main.9f318511.css.map": "/algo-trading/static/css/main.9f318511.css.map",
-    "main.5bb2538b.js.map": "/algo-trading/static/js/main.5bb2538b.js.map",
+    "main.4b4cade8.css.map": "/algo-trading/static/css/main.4b4cade8.css.map",
+    "main.7f74dcbf.js.map": "/algo-trading/static/js/main.7f74dcbf.js.map",
     "787.b994d700.chunk.js.map": "/algo-trading/static/js/787.b994d700.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.9f318511.css",
-    "static/js/main.5bb2538b.js"
+    "static/css/main.4b4cade8.css",
+    "static/js/main.7f74dcbf.js"
   ]
 }
