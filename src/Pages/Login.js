@@ -21,7 +21,8 @@ fyers.setRedirectUrl(redirectURL)
 export default function Login() {
 
     const [accessToken, setAccessToken] = useState(null);
-    const [authCode, setAuthCode] = useState(null)
+    const [authCode, setAuthCode] = useState(null);
+    const [userDetails, setUserDetails] = useState(null);
 
     useEffect(() => {
         const url = window.location.href;
@@ -51,10 +52,10 @@ export default function Login() {
 
         Promise.all([resp]).then(res => {
             console.log('res start', res);
-            if(res[0]['data']['s'] == 'ok') {
+            if(res[0]?.data?.s == 'ok') {
                 console.log('res if', res);
-                setAccessToken(res[0]['data']['access_token'])
-                fyers.setAccessToken(res[0]['data']['access_token'])
+                setAccessToken(res[0]?.data?.access_token)
+                fyers.setAccessToken(res[0]?.data?.access_token)
             }
         })
     }
@@ -64,6 +65,10 @@ export default function Login() {
             const userDetails = fyers.get_profile();
 
             Promise.all([userDetails]).then(res => {
+                if(res[0].s === 'ok') {
+                    setUserDetails(res[0].data)
+                }
+                setUserDetails(res)
                 console.log('user details', res)
             })
         }
@@ -74,21 +79,41 @@ export default function Login() {
         <>
             <div className="flex align-items-center justify-content-center" style={{top: '7rem' , position: 'relative' }}>
                 <div className="surface-card p-4 shadow-2 border-round w-full lg:w-10">
-                        <div className='grid'>
-                            <div 
-                                className='col-12 flex align-items-center justify-content-center'>
-                                <span className='text-4xl font-semibold'>ALGO TRADING</span>
-                                {
-                                    accessToken &&
-                                    <Button 
-                                        label="User Details" 
-                                        icon="pi pi-external-link" 
-                                        onClick={getUserDetails} 
-                                    />
-                                }
-                            </div>
+                    <div className='grid'>
+                        <div 
+                            className='col-12 flex align-items-center justify-content-center'>
+                            <span className='text-4xl font-semibold'>ALGO TRADING</span>
+                            {
+                                accessToken &&
+                                <Button 
+                                    label="User Details" 
+                                    icon="pi pi-external-link" 
+                                    onClick={getUserDetails} 
+                                />
+                            }
                         </div>
-                    </div>              
+                    </div>
+                    {
+                        userDetails &&
+                        <div className='grid'>
+                            <table>
+                                <tr>
+                                    <td>Name</td>
+                                    <td>{userDetails?.name}</td>
+                                </tr>
+                                <tr>
+                                    <td>Display Name</td>
+                                    <td>{userDetails?.display_name}</td>
+                                </tr>
+                                <tr>
+                                    <td>Fyers ID</td>
+                                    <td>{userDetails?.fy_id}</td>
+                                </tr>
+                            </table>
+                        </div>
+                    }
+                    
+                </div>              
             </div>
         </>
     );
