@@ -59,33 +59,37 @@ export default function OrdersDialog(props) {
         })
     }
 
-    const sideTemplate = (product) => {
-        return side[product?.side];
+    const sideTemplate = (order) => {
+        return side[order?.side];
     };
 
-    const segmentTemplate = (product) => {
-        return segment[product?.segment];
+    const segmentTemplate = (order) => {
+        return segment[order?.segment];
     };
 
-    const statusTemplate = (product) => {
-        return status[product?.status];
+    const statusTemplate = (order) => {
+        return status[order?.status];
     };
 
-    const header = (
-        <div className="flex flex-wrap align-items-center justify-content-between gap-2">
-            <span className="text-xl text-900 font-bold">Orders</span>
-            <Button 
-                icon="pi pi-refresh" 
-                rounded 
-                raised 
-                onClick={getOrderDetails}
-                scrollable 
-                scrollHeight="400px"
-            />
-        </div>
-    );
+    const buyAvgTemplate = (order) => {
+        return order?.buyAvg?.toFixed(2);
+    }
 
-    const footer = `Positions P&L: `;
+    const sellAvgTemplate = (order) => {
+        return order?.sellAvg?.toFixed(2);
+    }
+
+    const totalPLTemplate = (order) => {
+        return order?.pl?.toFixed(2);
+    }
+
+    const unrealisedPLTemplate = (order) => {
+        return order?.unrealized_profit?.toFixed(2);
+    }
+
+    const realisedPLTemplate = (order) => {
+        return order?.realized_profit?.toFixed(2);
+    }
 
     return (
         <div>
@@ -93,65 +97,58 @@ export default function OrdersDialog(props) {
                 <div className="card">
                     <TabView>
                         <TabPanel header="Orders">
-                            orders && 
-                            <DataTable 
-                                value={orders} 
-                                header={header} 
-                                footer={footer} 
-                                tableStyle={{ minWidth: '60rem' }}
-                                size='small'
-                                showGridlines
-                                stripedRows
-                                paginator 
-                                rows={6} 
-                                rowsPerPageOptions={[6, 12, 24, 48]}
-                                loading={orderLoading}
-                            >
-                                <Column field="symbol" header="Symbol"></Column>
-                                <Column field="side" header="Buy/Sell" body={sideTemplate}></Column>
-                                <Column field="segment" header="Segment" body={segmentTemplate}></Column>
-                                <Column field="productType" header="Type"></Column>
-                                <Column field="qty" header="Qty"></Column>
-                                <Column field="tradedPrice" header="Traded Price"></Column>
-                                <Column field="status" header="Status" body={statusTemplate}></Column>
-                                <Column field="orderDateTime" header="Order Time"></Column>
-                            </DataTable>
+                            {   orders && 
+                                <DataTable 
+                                    value={orders} 
+                                    tableStyle={{ minWidth: '60rem' }}
+                                    size='small'
+                                    showGridlines
+                                    stripedRows
+                                    paginator 
+                                    rows={6} 
+                                    rowsPerPageOptions={[6, 12, 24, 48]}
+                                    loading={orderLoading}
+                                >
+                                    <Column field="symbol" header="Symbol"></Column>
+                                    <Column field="side" header="Buy/Sell" body={sideTemplate}></Column>
+                                    <Column field="segment" header="Segment" body={segmentTemplate}></Column>
+                                    <Column field="productType" header="Type"></Column>
+                                    <Column field="qty" header="Qty"></Column>
+                                    <Column field="tradedPrice" header="Traded Price"></Column>
+                                    <Column field="status" header="Status" body={statusTemplate}></Column>
+                                    <Column field="orderDateTime" header="Order Time"></Column>
+                                </DataTable>
+                            }
                         </TabPanel>
                         <TabPanel header="Positions">
-                            positions &&
-                            <DataTable 
-                                value={orders} 
-                                header={header} 
-                                footer={footer} 
-                                tableStyle={{ minWidth: '60rem' }}
-                                size='small'
-                                showGridlines
-                                stripedRows
-                                paginator 
-                                rows={6} 
-                                rowsPerPageOptions={[6, 12, 24, 48]}
-                                loading={positionLoading}
-                            >
-                                <Column field="symbol" header="Symbol"></Column>
-                                <Column field="productType" header="Product Type" ></Column>
-                                <Column field="side" header="Buy / Sell" body={sideTemplate}></Column>
-                                <Column field="avgPrice" header="Avg Price"></Column>
-                                <Column field="buyQty" header="Buy Qty"></Column>
-                                <Column field="buyAvg" header="Buy Avg"></Column>
-                                <Column field="sellQty" header="Sell Qty"></Column>
-                                <Column field="sellAvg" header="Sell Avg"></Column>
-                                <Column field="unrealized_profit" header="Unrealised P&L"></Column>
-                                <Column field="realized_profit" header="Realised P&L"></Column>
-                                <Column field="pl" header="Total P&L"></Column>
-                            </DataTable>
+                            {
+                                positions &&
+                                <DataTable 
+                                    value={positions} 
+                                    tableStyle={{ minWidth: '60rem' }}
+                                    size='small'
+                                    showGridlines
+                                    stripedRows
+                                    paginator 
+                                    rows={6} 
+                                    rowsPerPageOptions={[6, 12, 24, 48]}
+                                    loading={positionLoading}
+                                >
+                                    <Column field="symbol" header="Symbol"></Column>
+                                    <Column field="productType" header="Product Type" ></Column>
+                                    <Column field="side" header="Buy / Sell" body={sideTemplate}></Column>
+                                    <Column field="avgPrice" header="Avg Price"></Column>
+                                    <Column field="buyQty" header="Buy Qty"></Column>
+                                    <Column field="buyAvg" header="Buy Avg" body={buyAvgTemplate}></Column>
+                                    <Column field="sellQty" header="Sell Qty"></Column>
+                                    <Column field="sellAvg" header="Sell Avg" body={sellAvgTemplate}></Column>
+                                    <Column field="unrealized_profit" header="Unrealised P&L" body={unrealisedPLTemplate}></Column>
+                                    <Column field="realized_profit" header="Realised P&L" body={realisedPLTemplate}></Column>
+                                    <Column field="pl" header="Total P&L" body={totalPLTemplate}></Column>
+                                </DataTable>
+                            }
                         </TabPanel>
                     </TabView>
-                    <DataTable />
-
-                    {
-                        
-                    }
-                    
                 </div>
             </div>
         </div>
