@@ -51,10 +51,10 @@ export default function Login() {
 
         Promise.all([resp]).then(res => {
             console.log('res start', res);
-            if(res['data']['s'] == 'ok') {
+            if(res[0]['data']['s'] == 'ok') {
                 console.log('res if', res);
-                setAccessToken(res['data']['access_token'])
-                fyers.setAccessToken(res['data']['access_token'])
+                setAccessToken(res[0]['data']['access_token'])
+                fyers.setAccessToken(res[0]['data']['access_token'])
             }
         })
     }
