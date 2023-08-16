@@ -51,24 +51,23 @@ export default function Login() {
         })
 
         Promise.all([resp]).then(res => {
-            console.log('res start', res);
             if(res[0]?.data?.s == 'ok') {
-                console.log('res if', res);
                 setAccessToken(res[0]?.data?.access_token)
                 fyers.setAccessToken(res[0]?.data?.access_token)
+
+                getUserDetails(res[0]?.data?.access_token)
             }
         })
     }
 
-    const getUserDetails = async() => {
-        if(accessToken !== null) {
-            const userDetails = fyers.get_profile();
+    const getUserDetails = async(token) => {
+        if(token !== null) {
+            const userDetails = await fyers.get_profile();
 
             Promise.all([userDetails]).then(res => {
                 if(res[0].s === 'ok') {
                     setUserDetails(res[0].data)
                 }
-                console.log('user details', res)
             })
         }
         
@@ -76,43 +75,30 @@ export default function Login() {
 
     return (
         <>
-            <div className="flex align-items-center justify-content-center" style={{top: '7rem' , position: 'relative' }}>
-                <div className="surface-card p-4 shadow-2 border-round w-full lg:w-10">
-                    <div className='grid'>
-                        <div 
-                            className='col-12 flex align-items-center justify-content-center'>
-                            <span className='text-4xl font-semibold'>ALGO TRADING</span>
-                            {
-                                accessToken &&
-                                <Button 
-                                    label="User Details" 
-                                    icon="pi pi-external-link" 
-                                    onClick={getUserDetails} 
-                                />
-                            }
+            <div>
+                <div>
+                    <div className="grid grid-nogutter text-800"
+                        style={{
+                            marginBottom: "20px",
+                            background: '#eeebea',
+                            borderBottom: '1px solid #1e242b'
+                        }}>
+                        <div className="col-6 md:col-6 text-center md:text-left flex align-items-center" style={{ paddingLeft: '10px' }}>
+                            <section>
+                                <div className="font-bold mb-3 headerText">ALGO TRADING</div>
+                            </section>
                         </div>
+                        {
+                            userDetails && 
+                            <div className="col-6 md:col-6" style={{ display: 'flex', flexDirection: 'row', alignItems: 'center', justifyContent: 'end', paddingRight: '10px' }}>
+                                <section style={{ marginRight: '15px' }}>
+                                    <div className="headerText" style={{ fontSize: '18px' }}>Welcome {userDetails?.name}</div>
+                                </section>
+                            </div>
+                        }
+                        
                     </div>
-                    {
-                        userDetails &&
-                        <div className='grid'>
-                            <table>
-                                <tr>
-                                    <td>Name</td>
-                                    <td>{userDetails?.name}</td>
-                                </tr>
-                                <tr>
-                                    <td>Display Name</td>
-                                    <td>{userDetails?.display_name}</td>
-                                </tr>
-                                <tr>
-                                    <td>Fyers ID</td>
-                                    <td>{userDetails?.fy_id}</td>
-                                </tr>
-                            </table>
-                        </div>
-                    }
-                    
-                </div>              
+                </div>            
             </div>
         </>
     );
