@@ -134,6 +134,12 @@
     border-radius: 50%;
 }
 
+.p-datatable-footer {
+    display: flex !important;
+    align-items: center !important;
+    justify-content: end !important;
+}
+
 @media screen and (max-width: 960px) {
     .p-column-title {
         width: fit-content;

@@ -62,7 +62,7 @@ export default function OrdersDialog(props) {
 
             console.log(positions);
             setPositions(positions);
-            setTotalPL(tpl);
+            setTotalPL(tpl?.toFixed(2));
             setPositionLoading(false);
         })
     }

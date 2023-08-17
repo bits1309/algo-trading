@@ -7,6 +7,7 @@ import 'primereact/resources/primereact.css';
 import 'primeflex/primeflex.css';
 import axios from 'axios';
 import { Button } from 'primereact/button';
+import { TabView, TabPanel } from 'primereact/tabview';
 
 import OrdersDialog from './ordersDialog'
 
@@ -69,7 +70,6 @@ export default function Login() {
             Promise.all([userDetails]).then(res => {
                 if(res[0].s === 'ok') {
                     setUserDetails(res[0].data)
-                    //window.location.href = redirectURL;
                 }
             }) 
         }
@@ -102,12 +102,20 @@ export default function Login() {
                         
                     </div>
                     <div>
-                        {
-                            accessToken 
-                            && <OrdersDialog
-                                fyers={fyers}
-                            />
-                        }
+                        <TabView>
+                            <TabPanel header="Dashboard">
+                                {
+                                    accessToken 
+                                    && <OrdersDialog
+                                        fyers={fyers}
+                                    />
+                                }
+                            </TabPanel>
+                            <TabPanel header="Live Data">
+
+                            </TabPanel>
+                        </TabView>
+                        
                     </div>
                 </div>            
             </div>
