@@ -18,6 +18,7 @@ export default function OrdersDialog(props) {
     const [positions, setPositions] = useState(null);
     const [orderLoading, setOrderLoading] = useState(false);
     const [positionLoading, setPositionLoading] = useState(false);
+    const [totalPL, setTotalPL] = useState(0);
 
 
     useEffect(() => {
@@ -40,7 +41,7 @@ export default function OrdersDialog(props) {
         const orderDetails = await props.fyers.get_orders();
 
         Promise.all([orderDetails]).then(res => {
-            let orders = res[0].orderBook;
+            let orders = res[0].orderBook?.sort((a,b) => {return new Date(a.orderDateTime) - new Date(b.orderDateTime)});
             setOrders(orders);
             setOrderLoading(false);
         })
@@ -53,8 +54,15 @@ export default function OrdersDialog(props) {
 
         Promise.all([positionDetails]).then(res => {
             let positions = res[0].netPositions;
+
+            let tpl = 0;
+            positions?.forEach(a => {
+                tpl += a?.pl
+            })
+
             console.log(positions);
             setPositions(positions);
+            setTotalPL(tpl);
             setPositionLoading(false);
         })
     }
@@ -91,6 +99,8 @@ export default function OrdersDialog(props) {
         return order?.realized_profit?.toFixed(2);
     }
 
+    const footer = `Total P&L: ${totalPL}`;
+
     return (
         <div>
             <div className="datatable-doc-demo">
@@ -126,6 +136,7 @@ export default function OrdersDialog(props) {
                                 <DataTable 
                                     value={positions} 
                                     tableStyle={{ minWidth: '60rem' }}
+                                    footer={footer}
                                     size='small'
                                     showGridlines
                                     stripedRows
